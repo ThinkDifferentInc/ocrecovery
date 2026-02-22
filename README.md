@@ -53,3 +53,5 @@ This project is built directly upon the foundation of **acidanthera's** official
 `ocrecovery` simply provides a modernized, interactive frontend and consolidates the workflow. All credit for the reverse-engineering of Apple's recovery servers, chunklist parsing, and cryptographic verification goes to the incredible work done by the Acidanthera team.
 
 * [Acidanthera's macrecovery Project](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery)
+
+_The project is licensed under the BSD-3-Clause License as acidanthera's OpenCorePkg Repository._
