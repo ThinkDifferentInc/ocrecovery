@@ -43,8 +43,7 @@ python3 ocrecovery.py
 
 ## 📸 Preview
 
-(tbd)
-
+![ocrecovery.py showcase](https://github.com/ThinkDifferentInc/ocrecovery/blob/main/preview.png?raw=true)
 ---
 
 ## 📜 Credits & Acknowledgments
