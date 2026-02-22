@@ -10,7 +10,7 @@ No more looking around in the recovery_urls.txt file and copying and pasting. Ju
 
 ## ✨ Features
 
-* **Interactive Menu:** Select your desired macOS version (from Lion to Sequoia) from a clean, numbered list.
+* **Interactive Menu:** Select your desired macOS version (from Lion to Tahoe) from a clean, numbered list.
 * **Beautiful UI:** Powered by the `rich` Python library, featuring real-time download speeds, accurate byte tracking, and visual ETA.* **Automatic Verification:** Seamlessly verifies chunklist hashes with a clean visual spinner to ensure your `.dmg` isn't corrupted.
 * **Cross-Platform:** Runs natively via Python on Windows, macOS, and Linux.
 
