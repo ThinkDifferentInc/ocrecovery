@@ -255,7 +255,7 @@ def print_menu():
 def run_download(version: MacOSVersion):
     console.print(Panel(f"[bold green]Fetching[/bold green] {version.name}", border_style="green"))
 
-    # Parse arguments previously passed to subprocess
+    # prev passed to subprocess rewrite
     os_type = 'latest' if '-os' in version.extra_args and 'latest' in version.extra_args else 'default'
     diag = '-diag' in version.extra_args
     outdir = "com.apple.recovery.boot"
@@ -276,15 +276,15 @@ def run_download(version: MacOSVersion):
             transient=False,
         ) as progress:
             
-            # Download Chunklist
+            # chunklist dw
             cnk_task = progress.add_task(f"Downloading Chunklist", total=100)
             cnkpath = save_image(info[INFO_SIGN_LINK], info[INFO_SIGN_SESS], '', outdir, progress, cnk_task)
 
-            # Download DMG
+            # dmg dw
             dmg_task = progress.add_task(f"Downloading BaseSystem.dmg", total=100)
             dmgpath = save_image(info[INFO_IMAGE_LINK], info[INFO_IMAGE_SESS], '', outdir, progress, dmg_task)
 
-        # Verification step
+        # verify
         verify_image(dmgpath, cnkpath)
         console.print("\n[bold green]✔ All operations completed successfully[/bold green]")
 
