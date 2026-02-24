@@ -19,12 +19,7 @@ No more looking around in the recovery_urls.txt file and copying and pasting. Ju
 
 ### Prerequisites
 
-You need Python 3 installed on your system, along with the `rich` library for the terminal UI.
-
-```bash
-pip install rich
-
-```
+You need Python 3 installed on your system.
 
 ### Usage
 
