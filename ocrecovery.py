@@ -3,6 +3,40 @@
 # huge thank you to acidanthera for leading the way of vanilla hackintoshing! :D
 
 import sys
+import subprocess
+
+def ensure_package(package_name):
+    try:
+        __import__(package_name)
+    except ImportError:
+        print(f"Required package '{package_name}' not found. Installing...")
+        try:
+            subprocess.check_call(
+                [sys.executable, "-m", "pip", "install", package_name],
+                stdout=subprocess.DEVNULL
+            )
+        except subprocess.CalledProcessError:
+            print(f"Failed to install '{package_name}'. Please install it manually.")
+            sys.exit(1)
+
+        try:
+            __import__(package_name)
+        except ImportError:
+            print(f"Installation of '{package_name}' appears to have failed.")
+            sys.exit(1)
+
+ensure_package("rich")
+
+from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
+from rich.prompt import Prompt
+from rich.progress import (
+    Progress, SpinnerColumn, BarColumn, TextColumn,
+    TimeRemainingColumn, TransferSpeedColumn, DownloadColumn
+)
+from rich import box
+
 import os
 import hashlib
 import struct
@@ -255,7 +289,7 @@ def print_menu():
 def run_download(version: MacOSVersion):
     console.print(Panel(f"[bold green]Fetching[/bold green] {version.name}", border_style="green"))
 
-    # prev passed to subprocess rewrite
+    # Parse arguments previously passed to subprocess
     os_type = 'latest' if '-os' in version.extra_args and 'latest' in version.extra_args else 'default'
     diag = '-diag' in version.extra_args
     outdir = "com.apple.recovery.boot"
@@ -276,15 +310,15 @@ def run_download(version: MacOSVersion):
             transient=False,
         ) as progress:
             
-            # chunklist dw
+            # Download Chunklist
             cnk_task = progress.add_task(f"Downloading Chunklist", total=100)
             cnkpath = save_image(info[INFO_SIGN_LINK], info[INFO_SIGN_SESS], '', outdir, progress, cnk_task)
 
-            # dmg dw
+            # Download DMG
             dmg_task = progress.add_task(f"Downloading BaseSystem.dmg", total=100)
             dmgpath = save_image(info[INFO_IMAGE_LINK], info[INFO_IMAGE_SESS], '', outdir, progress, dmg_task)
 
-        # verify
+        # Verification step
         verify_image(dmgpath, cnkpath)
         console.print("\n[bold green]✔ All operations completed successfully[/bold green]")
 
