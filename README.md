@@ -49,4 +49,4 @@ This project is built directly upon the foundation of **acidanthera's** official
 
 * [Acidanthera's macrecovery Project](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery)
 
-_The project is licensed under the BSD-3-Clause License as acidanthera's OpenCorePkg Repository._
+_The project is licensed under the BSD-3-Clause License, the same as acidanthera's OpenCorePkg Repository._
